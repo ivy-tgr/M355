@@ -47,7 +47,13 @@ const RecipeForm: React.FC = () => {
     setIngredients(updated);
   };
 
-  const uploadImageToSupabase = async (photo: any): Promise<string | null> => {
+  interface Photo {
+    webviewPath?: string;
+  }
+
+  const uploadImageToSupabase = async (
+    photo: Photo
+  ): Promise<string | null> => {
     try {
       let base64Data: string;
 
@@ -139,7 +145,7 @@ const RecipeForm: React.FC = () => {
         category,
         description: description.trim(),
         ingredients: validIngredients,
-        image_url: imageUrl,
+        image_url: imageUrl ?? undefined,
       };
 
       const { error } = await supabase
@@ -179,8 +185,8 @@ const RecipeForm: React.FC = () => {
 
   return (
     <IonPage>
-      <IonText className="center-title-home">
-        <h1>New Recipe</h1>
+      <IonText className="center-title">
+        <h1>ADD RECIPES</h1>
       </IonText>
 
       <IonContent className="recipe-content">
@@ -216,6 +222,7 @@ const RecipeForm: React.FC = () => {
             <IonSelect
               placeholder="Value"
               value={category}
+              
               onIonChange={(e) => setCategory(e.detail.value!)}
             >
               <IonSelectOption value="dessert">Dessert</IonSelectOption>

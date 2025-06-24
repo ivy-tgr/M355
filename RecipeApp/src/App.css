@@ -1,7 +1,7 @@
 .ion-tab-bar {
-    background-color: var(--color-green);
-    border: none;
-    color: var(--color-black);
+  background-color: var(--color-green);
+  border: none;
+  color: var(--color-black);
 }
 
 body {
@@ -9,4 +9,16 @@ body {
   font-family: var(--font-family-base);
   font-size: var(--font-size-base);
   color: var(--color-black);
+}
+
+.center-title h1 {
+  padding-top: 40px;
+  padding-bottom: 5px;
+  text-align: center;
+  color: var(--color-black);
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  font-size: 36px;
+  color: #757575;
+  margin: 0;
 }

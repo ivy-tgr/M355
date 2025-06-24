@@ -78,5 +78,22 @@
 }
 
 .button-native {
-    --backgrozund: var(--color-black);
+  --backgrozund: var(--color-black);
+}
+
+.photo-card {
+  --background: var(--color-brown);
+  border-radius: 15px;
+}
+
+.thumb-buttons {
+  --background: var(--color-black);
+  color: white;
+  height: 50px;
+}
+
+.photo-buttons {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
 }

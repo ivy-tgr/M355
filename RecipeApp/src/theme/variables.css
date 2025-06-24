@@ -1,11 +1,9 @@
 :root {
-  /* Farben */
   --color-lightGreen: #E7EFC7;
   --color-green: #AEC8A4;
   --color-brown: #8A784E;
   --color-black: #3B3B1A;
 
-  /* Schrift */
   --font-family-base: 'Arial', sans-serif;
   --font-size-base: 16px;
   --font-color-base: var(--color-black);

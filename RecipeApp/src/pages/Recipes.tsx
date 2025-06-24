@@ -36,7 +36,7 @@ const Recipes: React.FC = () => {
       const { data, error } = await supabase
         .from("recipes")
         .select("id, name, category, description, image_url, stars");
-      
+
       if (error) {
         console.error(error);
       } else if (data) {
@@ -75,8 +75,10 @@ const Recipes: React.FC = () => {
   return (
     <IonPage>
       <IonContent className="recipes-page" fullscreen>
+        <IonText className="center-title">
+          <h1>RECIPES</h1>
+        </IonText>
         <div className="container">
-          <h1 className="recipes-title">RECIPES</h1>
           <IonSearchbar
             placeholder="Search"
             className="search-bar"
@@ -87,19 +89,21 @@ const Recipes: React.FC = () => {
           {paginated.map((item) => (
             <IonCard className="recipe-card" key={item.id}>
               <IonCardContent className="recipe-card-content">
-                <IonThumbnail className="recipe-thumbnail">
-                  <IonImg
-                    alt={item.name}
-                    src={
-                      item.image_url ||
-                      "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fstatic3.bigstockphoto.com%2F0%2F3%2F3%2Flarge1500%2F330698995.jpg&f=1&nofb=1&ipt=fe672a8603167ca730f02c749724d31821e003366d6f6228d17efe20786f5873"
-                    }
-                  />
-                </IonThumbnail>
-                <IonLabel>
-                  <h2>{item.name}</h2>
-                  <IonText>{item.category}</IonText>
-                </IonLabel>
+                <div className="recipe-category">
+                  <IonThumbnail className="recipe-thumbnail">
+                    <IonImg className="recipe-image"
+                      alt={item.name}
+                      src={
+                        item.image_url ||
+                        "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fstatic3.bigstockphoto.com%2F0%2F3%2F3%2Flarge1500%2F330698995.jpg&f=1&nofb=1&ipt=fe672a8603167ca730f02c749724d31821e003366d6f6228d17efe20786f5873"
+                      }
+                    />
+                  </IonThumbnail>
+                  <IonLabel>
+                    <h2>{item.name}</h2>
+                    <IonText>{item.category}</IonText>
+                  </IonLabel>
+                </div>
                 <div className="recipe-stars">
                   {[...Array(4)].map((_, i) => (
                     <IonIcon

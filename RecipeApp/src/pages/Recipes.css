@@ -13,12 +13,15 @@
   color: black;
   --background: white;
   --border-radius: 90px;
+  padding-bottom: 30px;
 }
 
 .recipe-card-content {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  background-color: var(--color-brown);
+  padding: 10px;
 }
 
 .container {
@@ -30,6 +33,8 @@
 .recipe-card {
   color: var(--font-color-base);
   border-radius: 20px;
+  width: 90%;
+  margin: 0px 0px 10px 0px;
 }
 
 .recipe-thumbnail {
@@ -67,4 +72,13 @@
 
 .page-number.active {
   background: var(--color-green);
+}
+
+.recipe-category {
+  display: flex;
+}
+
+.recipe-image {
+  width: 3em;
+  border-radius: 10px;
 }

@@ -33,7 +33,7 @@ const Home: React.FC = () => {
       const { data, error } = await supabase
         .from("recipes")
         .select("id, name, category, description, image_url, stars");
-      
+
       if (error) {
         console.error(error);
         setLoading(false);

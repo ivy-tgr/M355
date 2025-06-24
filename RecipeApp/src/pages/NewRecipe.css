@@ -22,6 +22,7 @@
 
 .input-item {
   --background: var(--color-brown);
+  color: black;
 }
 
 .ingredient-row {
@@ -51,4 +52,12 @@
 
 .add-button {
   color: var(--color-black);
+}
+
+.ingredient-input {
+  color: black;
+}
+
+.amount-input {
+  color: black;
 }
