@@ -22,13 +22,13 @@
 }
 
 .recipe-card-home ion-img {
-  height: 150px;
+  height: 130px;
   object-fit: cover;
   border-radius: 15px 15px 0 0;
 }
 
 .recipe-card-home ion-card-header {
-  padding: 12px;
+  padding: 10px;
 }
 
 .recipe-card-home ion-card-title {
