@@ -38,7 +38,6 @@ const Home: React.FC = () => {
         console.error(error);
         setLoading(false);
       } else if (data && data.length > 0) {
-        // Immer 6 Rezepte laden - CSS entscheidet wie viele angezeigt werden
         const shuffled = [...data].sort(() => 0.5 - Math.random());
         setRandomRecipes(shuffled.slice(0, 6));
         setLoading(false);
@@ -70,13 +69,7 @@ const Home: React.FC = () => {
         <div className="recipes-container-home">
           {randomRecipes.map((recipe) => (
             <IonCard key={recipe.id} className="recipe-card-home">
-              <IonImg
-                src={
-                  recipe.image_url ||
-                  "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.aspicyperspective.com%2Fwp-content%2Fuploads%2F2020%2F07%2Fbest-hamburger-patties-1.jpg&f=1&nofb=1&ipt=7b397f024f0c64cc82e5ef99fb23739e3040c61ef775e765933f3b01d1be5a2c"
-                }
-                alt={recipe.name}
-              />
+              <IonImg src={recipe.image_url} alt={recipe.name} />
               <IonCardHeader>
                 <IonCardTitle>{recipe.name}</IonCardTitle>
                 <IonCardSubtitle>{recipe.category}</IonCardSubtitle>

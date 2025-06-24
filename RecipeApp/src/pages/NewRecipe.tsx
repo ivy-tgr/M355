@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   IonPage,
   IonContent,
@@ -19,6 +19,13 @@ import { supabase, base64ToBlob, Recipe } from "../data/supabase";
 import { usePhotoGallery } from "../hooks/usePhotoGallery";
 import "./NewRecipe.css";
 
+const STORAGE_KEYS = {
+  NAME: "recipe_form_name",
+  CATEGORY: "recipe_form_category",
+  DESCRIPTION: "recipe_form_description",
+  INGREDIENTS: "recipe_form_ingredients",
+};
+
 const RecipeForm: React.FC = () => {
   const [name, setName] = useState("");
   const [category, setCategory] = useState("");
@@ -32,6 +39,71 @@ const RecipeForm: React.FC = () => {
   const [toastColor, setToastColor] = useState("success");
 
   const { photos, clearAllPhotos, getLatestPhoto } = usePhotoGallery();
+
+  const saveToLocalStorage = (key: string, value: string | object) => {
+    try {
+      if (typeof window !== "undefined" && window.localStorage) {
+        localStorage.setItem(key, JSON.stringify(value));
+      }
+    } catch (error) {
+      console.warn("Fehler beim Speichern in localStorage:", error);
+    }
+  };
+
+  const loadFromLocalStorage = (key: string, defaultValue: unknown = null) => {
+    try {
+      if (typeof window !== "undefined" && window.localStorage) {
+        const saved = localStorage.getItem(key);
+        return saved ? JSON.parse(saved) : defaultValue;
+      }
+    } catch (error) {
+      console.warn("Fehler beim Laden aus localStorage:", error);
+    }
+    return defaultValue;
+  };
+
+  const clearLocalStorage = () => {
+    try {
+      if (typeof window !== "undefined" && window.localStorage) {
+        Object.values(STORAGE_KEYS).forEach((key) => {
+          localStorage.removeItem(key);
+        });
+      }
+    } catch (error) {
+      console.warn("Fehler beim Löschen aus localStorage:", error);
+    }
+  };
+
+  useEffect(() => {
+    const savedName = loadFromLocalStorage(STORAGE_KEYS.NAME, "");
+    const savedCategory = loadFromLocalStorage(STORAGE_KEYS.CATEGORY, "");
+    const savedDescription = loadFromLocalStorage(STORAGE_KEYS.DESCRIPTION, "");
+    const savedIngredients = loadFromLocalStorage(STORAGE_KEYS.INGREDIENTS, [
+      { ingredient: "", amount: "" },
+    ]);
+
+    if (savedName) setName(savedName);
+    if (savedCategory) setCategory(savedCategory);
+    if (savedDescription) setDescription(savedDescription);
+    if (savedIngredients && savedIngredients.length > 0)
+      setIngredients(savedIngredients);
+  }, []);
+
+  useEffect(() => {
+    saveToLocalStorage(STORAGE_KEYS.NAME, name);
+  }, [name]);
+
+  useEffect(() => {
+    saveToLocalStorage(STORAGE_KEYS.CATEGORY, category);
+  }, [category]);
+
+  useEffect(() => {
+    saveToLocalStorage(STORAGE_KEYS.DESCRIPTION, description);
+  }, [description]);
+
+  useEffect(() => {
+    saveToLocalStorage(STORAGE_KEYS.INGREDIENTS, ingredients);
+  }, [ingredients]);
 
   const addIngredient = () => {
     setIngredients([...ingredients, { ingredient: "", amount: "" }]);
@@ -169,6 +241,7 @@ const RecipeForm: React.FC = () => {
       setCategory("");
       setDescription("");
       setIngredients([{ ingredient: "", amount: "" }]);
+      clearLocalStorage();
 
       if (photos.length > 0) {
         await clearAllPhotos();
@@ -220,14 +293,16 @@ const RecipeForm: React.FC = () => {
           <IonItem lines="none" className="input-item">
             <IonLabel position="stacked">Category</IonLabel>
             <IonSelect
-              placeholder="Value"
+              placeholder="Select a category"
               value={category}
-              
               onIonChange={(e) => setCategory(e.detail.value!)}
             >
+              <IonSelectOption value="appetizer">Appetizer</IonSelectOption>
+              <IonSelectOption value="main_course">Main Course</IonSelectOption>
               <IonSelectOption value="dessert">Dessert</IonSelectOption>
-              <IonSelectOption value="main">Main</IonSelectOption>
-              <IonSelectOption value="drink">Drink</IonSelectOption>
+              <IonSelectOption value="side_dish">Side Dish</IonSelectOption>
+              <IonSelectOption value="beverage">Beverage</IonSelectOption>
+              <IonSelectOption value="snack">Snack</IonSelectOption>
             </IonSelect>
           </IonItem>
 
@@ -299,6 +374,7 @@ const RecipeForm: React.FC = () => {
           message={toastMessage}
           duration={3000}
           color={toastColor}
+          position="top"
         />
       </IonContent>
     </IonPage>
