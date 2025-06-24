@@ -1,0 +1,82 @@
+.content {
+  --ion-background-color: var(--color-lightGreen);
+}
+.photo {
+  max-height: 150px;
+  object-fit: cover;
+}
+
+.camera-wrapper {
+  width: 10em;
+}
+
+.photo-counter {
+  padding: 16px 20px;
+  background-color: #f5f5f5;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.photo-counter p {
+  margin: 0;
+  font-size: 14px;
+  color: #666;
+  text-align: center;
+}
+
+.photo-container {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.photo-image {
+  aspect-ratio: 1;
+  object-fit: cover;
+  cursor: pointer;
+}
+
+.newest-label {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.no-photos {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 50vh;
+  text-align: center;
+  padding: 20px;
+}
+
+.no-photos ion-icon {
+  font-size: 64px;
+  color: #ccc;
+  margin-bottom: 16px;
+}
+
+.no-photos p {
+  color: #666;
+  font-size: 16px;
+  margin: 0;
+}
+
+.photo-grid {
+  display: flex;
+  justify-content: center;
+}
+
+.button-native {
+    --backgrozund: var(--color-black);
+}

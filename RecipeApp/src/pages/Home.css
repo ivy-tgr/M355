@@ -1,0 +1,124 @@
+.custom-content-home {
+  --background: var(--color-lightGreen);
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  height: 100vh;
+}
+
+.center-title-home {
+  text-align: center;
+  color: var(--color-black);
+  margin-bottom: 20px;
+}
+
+.center-title-home h1 {
+  margin: 0;
+  font-size: 2rem;
+}
+
+.recipes-container-home {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+  flex: 1;
+}
+
+.recipe-card-home {
+  flex: 1 1 300px;
+  max-width: 220px;
+  min-width: 200px;
+  border-radius: 15px;
+  --background: var(--color-brown);
+  text-align: center;
+  margin: 0;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.recipe-card-home ion-img {
+  height: 150px;
+  object-fit: cover;
+  border-radius: 15px 15px 0 0;
+}
+
+.recipe-card-home ion-card-header {
+  padding: 12px;
+}
+
+.recipe-card-home ion-card-title {
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+
+.recipe-card-home ion-card-subtitle {
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+.stars {
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+  font-size: 16px;
+  color: #ffd700;
+  padding: 8px 12px 12px;
+}
+
+.loading-container-home {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60vh;
+  font-size: 1.2rem;
+  color: var(--color-black);
+}
+
+/* Hochformat: Zeige nur 1 Card */
+@media (orientation: portrait) {
+  .recipe-card-home:not(:first-child) {
+    display: none;
+  }
+  
+  .recipe-card-home {
+    flex: none;
+    width: 85%;
+    max-width: 350px;
+  }
+}
+
+/* Kleine Querformate: 2-3 Cards */
+@media (orientation: landscape) and (max-width: 600px) {
+  .recipe-card-home:nth-child(n+3) {
+    display: none;
+  }
+}
+
+/* Kleine Querformate: 3 Cards */
+@media (orientation: landscape) and (min-width: 601px) and (max-width: 939px) {
+  .recipe-card-home:nth-child(n+4) {
+    display: none;
+  }
+}
+
+/* Mittlere Querformate: 4 Cards */
+@media (orientation: landscape) and (min-width: 940px) and (max-width: 1200px) {
+  .recipe-card-home:nth-child(n+5) {
+    display: none;
+  }
+}
+
+/* Große Querformate: 5 Cards */
+@media (orientation: landscape) and (min-width: 1201px) and (max-width: 1500px) {
+  .recipe-card-home:nth-child(n+6) {
+    display: none;
+  }
+}
+
+/* Sehr große Querformate: Alle 6 Cards */
+@media (orientation: landscape) and (min-width: 1501px) {
+  .recipe-card-home {
+    flex: 1 1 200px;
+  }
+}

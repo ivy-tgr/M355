@@ -1,0 +1,12 @@
+.ion-tab-bar {
+    background-color: var(--color-green);
+    border: none;
+    color: var(--color-black);
+}
+
+body {
+  background-color: var(--color-lightGreen);
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-base);
+  color: var(--color-black);
+}

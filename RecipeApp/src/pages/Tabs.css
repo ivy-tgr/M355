@@ -1,0 +1,11 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #E7EFC7;
+  flex-direction: column;
+}
+
+.title {
+  color: var(--color-black);
+}

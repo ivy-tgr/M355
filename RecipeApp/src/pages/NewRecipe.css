@@ -1,0 +1,54 @@
+.recipe-content {
+  --background: var(--color-lightGreen);
+  padding: 16px;
+}
+
+.header-title {
+  font-weight: bold;
+  text-align: center;
+}
+
+.form-container {
+  background-color: var(--color-brown);
+  border-radius: 16px;
+  padding: 20px;
+  margin: 20px;
+}
+
+.photo-button-wrapper {
+  text-align: center;
+  margin: 12px 0;
+}
+
+.input-item {
+  --background: var(--color-brown);
+}
+
+.ingredient-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.ingredient-input,
+.amount-input {
+  flex: 1 1 45%;
+  --background: var(--color-brown);
+}
+
+.add-button-inline {
+  display: flex;
+  text-align: center;
+  margin-top: 16px;
+  color: var(--color-black);
+}
+
+.submit-button {
+  margin-top: 20px;
+  --background: var(--color-black);
+  color: white;
+}
+
+.add-button {
+  color: var(--color-black);
+}
